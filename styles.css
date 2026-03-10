@@ -1225,7 +1225,79 @@ body.light-theme .navbar.scrolled {
         transform: translateX(0);
     }
 }
+/* ===================================
+   SERVICES SECTION
+   =================================== */
 
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--bg-secondary);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: var(--accent-blue);
+    background: var(--bg-tertiary);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--accent-blue);
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-normal);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.service-card h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: var(--font-size-md);
+}
+
+/* Glow border animation */
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: var(--accent-gradient);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
 /* Smooth transitions for all interactive elements */
 a,
 button,
